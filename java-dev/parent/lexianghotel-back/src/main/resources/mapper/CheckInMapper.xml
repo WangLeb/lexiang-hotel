@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lexiang.back.mapper.CheckInMapper">
+
+	<sql id="baseSql"></sql>
+
+	<sql id="checkRoom">room_code as roomCode</sql>
+	<resultMap type="com.lexiang.back.entity.vo.CheckInVO"
+		id="baseMap">
+		<result property="outTime" column="out_time" />
+		<result property="id" column="id" />
+		<result property="cardId" column="card_id" />
+		<result property="cardName" column="card_name" />
+		<result property="checkName" column="check_name" />
+		<result property="nums" column="nums" />
+		<result property="workId" column="work_id" />
+		<result property="roomId" column="room_id" />
+		<result property="creatTime" column="creat_time" />
+		<result property="phone" column="phone" />
+		<association property="room"
+			javaType="com.lexiang.back.entity.Room" select="checkRoom"
+			column="room_id">
+		</association>
+	</resultMap>
+
+	<!-- 查询登记信息 -->
+	<select id="listCheckIn" resultMap="baseMap">
+		select * from b_check_in 
+		<where>
+		
+		
+	     <if test="exprinTime != null">
+	     
+	       out_time &lt;= #{exprinTime,jdbcType=DATE}
+	     </if>
+		</where>
+		
+		order by creat_time desc
+	</select>
+
+	<!-- 根据登记信息查询所登记的房间号 -->
+	<select id="checkRoom"
+		resultType="com.lexiang.back.entity.Room">
+		SELECT 
+		<!-- <include refid = "selectRoom"></include>  -->
+		*
+		FROM
+		b_room
+		WHERE
+		id = #{roomId}
+	</select>
+</mapper>

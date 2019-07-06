@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lexiang.back.mapper.ReserveMapper">
+<sql id="listReserve">br.id,br.reserve_name as reserveName,br.reserve_phone as reservePhone,br.in_time as inTime,br.out_time as outTime,bt.type_name as typeName,bro.room_code as roomCode</sql>
+	<resultMap type="com.lexiang.back.entity.vo.ReserveVO"
+		id="baseMap">
+		<result property="id" column="id" />
+		<result property="reserveName" column="reserveName" />
+		<result property="reservePhone" column="reservePhone" />
+		<result property="inTime" column="inTime" />
+		<result property="outTime" column="outTime" />
+		<result property="typeId" column="typeId" />
+		<association property="reserve" column="type_id" javaType="com.lexiang.back.entity.Reserve">
+		</association>
+
+	</resultMap>
+	
+	<select id="listReserve" resultType="java.util.Map">
+	
+	select <include refid="listReserve"></include>  from b_reserve br left join b_room_type bt on  br.type_id = bt.id left join b_room bro on bro.id = br.room_id  
+	</select>
+</mapper>

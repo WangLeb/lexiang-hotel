@@ -1,0 +1,39 @@
+server:
+  port: 8000
+  servlet:
+    context-path: /system
+ 
+security:
+  oauth2:
+    client:
+      client-id: lexiang
+      client-secret: lexiangsecret
+    resource:
+      user-info-uri: http://47.100.20.221:8888/oauth/me 
+      prefer-token-info: false
+      
+      
+      
+spring:
+  application:
+    name: lexianghotel-back
+  datasource:
+    url: jdbc:mysql://47.100.20.221:3306/lexiang_hotel
+    username: root
+    password: root
+    dbcp2:
+      max-idle: 5
+      max-wait-millis: 10000
+      min-idle: 5
+      initial-size: 5
+      
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+    map-underscore-to-camel-case: true
+    jdbc-type-for-null: null
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: com.lexiang.back.entity.*
+  global-config:
+    #xml热加载
+    refresh: true

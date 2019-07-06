@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lexiang.back.mapper.BackuserMapper">
+	<resultMap type="com.lexiang.back.entity.vo.BackUserVO"
+		id="baseMap">
+
+
+		<result property="id" column="id" />
+		<result property="userName" column="user_name" />
+		<result property="userPws" column="user_pws" />
+		<result property="userImage" column="user_image" />
+		<result property="state" column="state" />
+		<result property="creatBy" column="creat_by" />
+		<result property="workId" column="work_id" />
+		<result property="creatTime" column="creat_time" />
+		<result property="updateTime" column="update_time" />
+		<result property="roleId" column="role_id" />
+		<association property="role"
+			javaType="com.lexiang.back.entity.Role" column="role_id"
+			select="com.lexiang.back.mapper.RoleMapper.roleOne">
+		</association>
+		<association property="creatUser" 
+			javaType="com.lexiang.back.entity.Backuser" 
+			column="creat_by" 
+			select="creatBy"
+			></association>
+		
+	</resultMap>
+	
+	<resultMap type="com.lexiang.back.entity.Backuser" id="creatByUser">
+	
+
+
+
+	</resultMap>
+	
+	<!-- 管理员列表 -->
+	<select id="listUser" resultMap="baseMap">
+	
+	SELECT
+	*  
+	FROM
+	b_backuser 
+
+	</select>
+	
+   <select id="creatBy" resultMap="creatByUser">
+	
+	SELECT
+	*  
+	FROM
+	b_backuser where id = #{creatBy}
+
+	</select>
+
+</mapper>

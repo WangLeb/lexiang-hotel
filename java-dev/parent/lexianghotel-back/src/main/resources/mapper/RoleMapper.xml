@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lexiang.back.mapper.RoleMapper">
+<resultMap type="com.lexiang.back.entity.vo.RoleVO" id="baseMap">
+	<result property="id" column="id" />
+	<result property="roleName" column="role_name" />
+	<collection property="permissions" column="id" ofType="com.lexiang.back.entity.Permission" select="listPermission">
+      
+	</collection>
+</resultMap>
+
+<!-- 获得对应角色 -->
+
+<select id="roleOne" resultMap="baseMap">
+SELECT
+	* 
+FROM
+	b_role 
+WHERE
+	id = #{roleId}  
+
+</select>
+
+
+<!-- 获得角色列表-->
+
+<select id="listRole" resultMap="baseMap">
+SELECT
+	* 
+FROM
+	b_role 
+
+
+</select>
+
+<!-- 获得角色对应的权限权限 -->
+
+<select id="listPermission" resultType="com.lexiang.back.entity.Permission">
+SELECT
+	* 
+FROM
+	b_permission bp
+	LEFT JOIN b_role_permission brp ON bp.id = brp.permission_id
+
+	LEFT JOIN b_role br ON brp.role_id = br.id where br.id = #{id}  
+
+</select>
+</mapper>

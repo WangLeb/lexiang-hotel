@@ -1,0 +1,38 @@
+server:
+  servlet:
+    context-path: /file
+  port:
+    9999
+  tomcat:
+    uri-encoding:
+      utf-8
+
+
+
+
+spring:
+#springMVC配置静态文件访问路径地址
+  mvc:
+    static-path-pattern: /**
+  resources:
+    static-locations: spring.resources.static-locations=classpath:/META-INF/resources/,classpath:/resources/,\classpath:/static/,classpath:/public/,file:${web.upload-path}
+  application:
+    name:
+      file-service
+      
+
+
+web:
+  upload-path: D:/DsUpload/
+#存储文件的服务器的主机地址
+  local-ip: 47.100.20.221
+
+
+
+
+
+
+
+
+
+

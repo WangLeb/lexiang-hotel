@@ -1,0 +1,27 @@
+{
+  "hints": [],
+  "groups": [
+    {
+      "sourceType": "com.lexiang.common.properties.BackProperties",
+      "name": "lexiang.config.back",
+      "type": "com.lexiang.common.properties.BackProperties"
+    },
+    {
+      "sourceType": "com.lexiang.common.properties.WebProperties",
+      "name": "lexiang.config.web",
+      "type": "com.lexiang.common.properties.WebProperties"
+    }
+  ],
+  "properties": [
+    {
+      "sourceType": "com.lexiang.common.properties.BackProperties",
+      "name": "lexiang.config.back.sercurity",
+      "type": "com.lexiang.common.properties.back.sercurityProperties"
+    },
+    {
+      "sourceType": "com.lexiang.common.properties.WebProperties",
+      "name": "lexiang.config.web.sercurity",
+      "type": "com.lexiang.common.properties.back.sercurityProperties"
+    }
+  ]
+}

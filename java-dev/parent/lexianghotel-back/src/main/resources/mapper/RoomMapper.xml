@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lexiang.back.mapper.RoomMapper">
+
+	<resultMap type="com.lexiang.back.entity.vo.RoomVO"
+		id="baseMap">
+		<result property="id" column="id" />
+		<result property="roomCode" column="room_code" />
+		<result property="typeId" column="type_id" />
+		<result property="state" column="state" />
+		<result property="workId" column="work_id" />
+		<result property="creatTime" column="creat_time" />
+		<association property="roomType" column="type_id"
+			javaType="com.lexiang.back.entity.RoomType" select="roomOne"></association>
+
+	</resultMap>
+	<select id="listRoom" resultMap="baseMap">
+	
+		select * from b_room order by creat_time desc
+		
+	</select>
+
+
+	<select id="roomOne" resultType="com.lexiang.back.entity.RoomType">
+		select * from b_room_type
+
+		<where>
+			id = #{typeId}
+
+		</where>
+
+	</select>
+</mapper>
