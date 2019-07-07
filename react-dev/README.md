@@ -1,6 +1,8 @@
-# parent父项目
+# REACT客户端
 
-直接在Eclipse导入此项目便可一次性导入
-
-认证服务、业务逻辑服务、文件上传服务、common依赖
+1.页面编写
+2.组件编写
+3.axios组件封装
+4.react-router-dom 路由控制
+5.redux+redux-persist 持久化存储
 
