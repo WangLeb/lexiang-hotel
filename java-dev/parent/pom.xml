@@ -36,7 +36,7 @@
 		<pagehelper.version>1.2.5</pagehelper.version>
 		<sf-json.version>2.4</sf-json.version>
 		<fastjson.version>1.2.38</fastjson.version>
-		<commons-io.version>2.6</commons-io.version>
+		<commons-io.version>2.7</commons-io.version>
 		<swagger.version>2.9.2</swagger.version>
 		<redis.version>2.0.6.RELEASE</redis.version>
 		<commons-collections>4.1</commons-collections>
